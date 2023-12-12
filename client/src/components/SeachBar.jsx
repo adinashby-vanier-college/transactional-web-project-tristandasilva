@@ -1,10 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
 const SearchBar = () => {
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+
   return (
-    <div className='flex m-1 items-center justify-between p-1 bg-[#353535] rounded w-[200px]'>
-      <span className='text-[#FFFFFF50] pl-1'>Search</span>
+    <div className='flex m-1 items-center bg-[#353535] rounded w-[200px]'>
+      <input
+        type='text'
+        placeholder='Search'
+        onChange={handleChange}
+        value={searchInput}
+        className='bg-[#00000000] border-none w-10/12 text-[#ffffff70]'
+      ></input>
       <img
         src='../public/search-icon.svg'
         alt='Search bar icon'

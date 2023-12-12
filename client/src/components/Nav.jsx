@@ -8,12 +8,16 @@ const Nav = () => {
   return (
     <Navbar fluid className='bg-brand-darkgrey'>
       <Navbar.Brand href='#'>
-        <img src='logo.svg' className='mr-3 h-6 sm:h-9' alt='VinylVault Logo' />
+        <img
+          src='logo.svg'
+          className='ml-3 mr-3 h-6 sm:h-9'
+          alt='VinylVault Logo'
+        />
         <span className='self-center whitespace-nowrap text-l font-semibold text-white'>
           VinylVault
         </span>
       </Navbar.Brand>
-      <div className='flex md:order-2'>
+      <div className='flex gap-2 md:order-2 mr-3'>
         <SearchBar></SearchBar>
         <Dropdown
           arrowIcon={false}
@@ -23,7 +27,6 @@ const Nav = () => {
         >
           <LoginDropdown></LoginDropdown>
         </Dropdown>
-        <Navbar.Toggle />
         <img
           src='cart-icon.svg'
           alt='Cart icon'
