@@ -2,28 +2,34 @@
 import React, { Component, useState } from 'react';
 import Nav from '../components/Nav';
 import '../index.css';
-import AlbumItem from '../components/AlbumItem';
-import AlbumItemList from '../components/AlbumItemList';
+import CategoryList from '../components/CategoryList';
+import starIcon from '../../public/star-icon.svg';
+import flamesIcon from '../../public/flames-icon.svg';
+import purpleHeart from '../../public/purpleheart-icon.svg';
 import vinylList from '../vinyls.json';
 
 const HomeScreen = () => {
   const [vinyls, setVinyls] = useState(vinylList);
-
   return (
-    <div className='h-screen homescreen-bg overflow-auto'>
+    <div className='h-full homescreen-bg'>
       <Nav></Nav>
       {/* Content Container */}
-      <div className='w-11/12 m-auto h-full bg-brand-darkgrey px-12'>
-        {/* Title Container With Icon */}
-        <div className='flex gap-4 items-center'>
-          <img src='star-icon.svg'></img>
-          <h2 className='text-white text-xl font-semibold'>Trending</h2>
-        </div>
-        {/* ----------- End --------- */}
-
-        {/* Horizontal album list */}
-        <AlbumItemList vinyls={vinylList} />
-        {/* -------- End -------- */}
+      <div className='w-11/12 m-auto pt-16 h-full bg-brand-darkgrey px-12 flex flex-col gap-y-10'>
+        <CategoryList
+          category={'Newly Added'}
+          icon={starIcon}
+          vinyls={vinylList}
+        />
+        <CategoryList
+          category={'Weekly Trends'}
+          icon={flamesIcon}
+          vinyls={vinylList}
+        />
+        <CategoryList
+          category={'Staff Picks'}
+          icon={purpleHeart}
+          vinyls={vinylList}
+        />
       </div>
     </div>
   );

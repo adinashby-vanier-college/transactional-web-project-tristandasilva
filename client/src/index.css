@@ -16,5 +16,6 @@
   overflow: hidden;
   width: 100%;
   min-width: 180px;
-  padding: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }

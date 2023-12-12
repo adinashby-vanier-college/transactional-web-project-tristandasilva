@@ -5,7 +5,7 @@ import AlbumItem from './AlbumItem';
 
 const AlbumItemList = ({ vinyls }) => {
   return (
-    <div className='flex flex-row gap-5 overflow-x-auto'>
+    <div className='flex flex-row gap-32 overflow-x-auto'>
       {vinyls.map((vinyl, index) => (
         <AlbumItem
           key={index}
