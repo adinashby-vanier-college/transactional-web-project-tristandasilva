@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Poppins', 'sans-serif';
+}
+
 .homescreen-bg {
   background-image: url('./assets/homepage-bg.png');
   background-color: #3e3e47;
@@ -12,10 +16,11 @@
 }
 
 .albumItemBox {
+  font-family: 'Inter', 'sans-serif';
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-width: 180px;
+  min-width: 200px;
   padding-bottom: 20px;
   padding-top: 20px;
 }

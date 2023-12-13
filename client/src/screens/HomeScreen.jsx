@@ -13,8 +13,7 @@ const HomeScreen = () => {
   return (
     <div className='h-full homescreen-bg'>
       <Nav></Nav>
-      {/* Content Container */}
-      <div className='w-11/12 m-auto pt-16 h-full bg-brand-darkgrey px-12 flex flex-col gap-y-10'>
+      <div className='w-11/12 m-auto py-16 h-full bg-brand-darkgrey px-24 flex flex-col gap-y-20'>
         <CategoryList
           category={'Newly Added'}
           icon={starIcon}
