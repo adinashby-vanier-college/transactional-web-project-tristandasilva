@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', 'sans-serif';
+}
+
+.homescreen-bg {
+  background-image: url('./assets/homepage-bg.png');
+  background-color: #3e3e47;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.albumItemBox {
+  font-family: 'Inter', 'sans-serif';
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-width: 200px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
