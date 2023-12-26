@@ -7,25 +7,19 @@ import { Button } from 'flowbite-react';
 const AlbumItem = (props) => {
   return (
     <div className='albumItemBox'>
-      {/* Overlay for vinyl info */}
-      {/* <div className='absolute h-full w-full bg-black/70 flex text-white'>
-        <div className='flex flex-col gap-4'>
-          <div>
-            <h3>{props.name}</h3>
-            <p className='text-[#C5C5C5]'>{props.artists[0]}</p>
-          </div>
-          <div>
-            <p>{props.genre}</p>
-          </div>
-        </div>
-      </div> */}
-      <img src={props.imageUrl}></img>
+      <div className='max-h-[200px] overflow-hidden'>
+        <img src={props.imageUrl}></img>
+      </div>
       <div className='h-2/5 w-full absolute bottom-5 bg-[#00000099] flex justify-between px-1.5 py-0.5'>
         <div className='flex flex-col justify-between'>
           <div>
-            <p className='text-white text-lg font-medium'>{props.name}</p>
+            <p className='text-white text-sm font-medium'>
+              {props.name.length > 40
+                ? props.name.substring(0, 39) + '...'
+                : props.name}
+            </p>
             <p className='text-[#C5C5C5] text-xs font-semibold'>
-              {props.artists[0]}
+              {/* {props.artists[0]} */}
             </p>
           </div>
           <div className='text-[#ffffff99] text-xs font-semibold mb-2'>
@@ -33,7 +27,7 @@ const AlbumItem = (props) => {
           </div>
         </div>
         <div className='flex flex-col justify-between mb-2 items-end'>
-          <p className='text-white text-base'>${props.price}</p>
+          {/* <p className='text-white text-base'>${props.price}</p> */}
           <Button
             size='sm'
             color='warning'

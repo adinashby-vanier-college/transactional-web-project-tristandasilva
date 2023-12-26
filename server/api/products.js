@@ -1,27 +1,27 @@
 /* eslint-disable no-undef */
-import express from "express";
-import axios from "axios";
-import dotenv from "dotenv";
+import express from 'express';
+import axios from 'axios';
+import dotenv from 'dotenv';
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: './.env' });
 
 const router = express.Router();
-const baseURL = "https://api.discogs.com/";
+const baseURL = 'https://api.discogs.com/';
 const header = {
-  "Content-Type": "application/json",
+  'Content-Type': 'application/json',
   Authorization:
-    "Discogs key=" +
+    'Discogs key=' +
     process.env.CUSTOMER_KEY +
-    ", secret=" +
-    process.env.CUSTOMER_SECRET,
+    ', secret=' +
+    process.env.CUSTOMER_SECERT,
 };
 
-router.get("/recent", async (req, res) => {
+router.get('/recent', async (req, res) => {
   const url = new URL(
     baseURL +
-      "database/search?year=" +
+      'database/search?year=' +
       new Date().getFullYear() +
-      "&per_page=20&type=master&format=album"
+      '&per_page=20&type=master&format=album'
   );
   const response = await axios.get(url, {
     headers: header,
@@ -29,29 +29,29 @@ router.get("/recent", async (req, res) => {
   res.send(response.data);
 });
 
-router.get("/genre/:id", async (req, res) => {
+router.get('/genre/:id', async (req, res) => {
   const url = new URL(
     baseURL +
-      "database/search?genre=" +
+      'database/search?genre=' +
       req.params.id +
-      "&per_page=20&type=master&format=album"
+      '&per_page=20&type=master&format=album'
   );
   const response = await axios.get(url, { headers: header });
   res.send(response.data);
 });
 
-router.get("/search/:q", async (req, res) => {
+router.get('/search/:q', async (req, res) => {
   const url = new URL(
     baseURL +
-      "database/search?q=" +
+      'database/search?q=' +
       req.params.q +
-      "type=master&format=album&per_page=20&"
+      'type=master&format=album&per_page=20&'
   );
   const response = await axios.get(url, { headers: header });
   res.send(response.data);
 });
 
-router.get("/trending", async (req, res) => {
+router.get('/trending', async (req, res) => {
   const url = new URL(
     baseURL + "database/search?q=' 'type=master&format=album&per_page=100&"
   );
@@ -64,8 +64,8 @@ router.get("/trending", async (req, res) => {
   res.send(response.data);
 });
 
-router.get("/:id", async (req, res) => {
-  const url = new URL(baseURL + "releases/" + req.params.id);
+router.get('/:id', async (req, res) => {
+  const url = new URL(baseURL + 'releases/' + req.params.id);
 
   try {
     const response = await axios.get(url, { headers: header });

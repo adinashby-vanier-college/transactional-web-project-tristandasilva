@@ -5,15 +5,15 @@ import AlbumItem from './AlbumItem';
 
 const AlbumItemList = ({ vinyls }) => {
   return (
-    <div className='flex flex-row gap-24 overflow-x-auto'>
+    <div className='flex flex-row gap-24 overflow-x-auto pb-5 customScrollbar'>
       {vinyls.map((vinyl, index) => (
         <AlbumItem
           key={index}
-          name={vinyl.name}
+          name={vinyl.title}
           genre={vinyl.genre}
-          artists={vinyl.artists}
-          price={vinyl.price}
-          imageUrl={vinyl.imageUrl}
+          // artists={vinyl.artists}
+          // price={vinyl.price}
+          imageUrl={vinyl.cover_image}
         />
       ))}
     </div>
