@@ -24,3 +24,28 @@ body {
   padding-bottom: 20px;
   padding-top: 20px;
 }
+
+/* width */
+.customScrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 7px;
+  scrollbar-width: thin;
+}
+
+/* Track */
+.customScrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.363);
+  border-radius: 10px;
+}
+
+/* Handle */
+.customScrollbar::-webkit-scrollbar-thumb {
+  background: #3e3e47ca;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+/* Handle on hover */
+.customScrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3e3e47;
+}
