@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
-import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Avatar, Dropdown, Navbar, Button } from 'flowbite-react';
 import SearchBar from './SeachBar';
 import LoginDropdown from './LoginDropdown';
+import LoginForm from './LoginForm';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
@@ -26,7 +28,14 @@ const Nav = () => {
             className='bg-brand-darkgrey'
             label={<Avatar alt='User settings' img='user-icon.svg' size='xs' />}
           >
-            <LoginDropdown></LoginDropdown>
+            <div>
+              <Link to='/login'>
+                <Button>LOGIN</Button>
+              </Link>
+              <Link to='/register'>
+                <Button>REGISTER</Button>
+              </Link>
+            </div>
           </Dropdown>
           <img
             src='cart-icon.svg'
