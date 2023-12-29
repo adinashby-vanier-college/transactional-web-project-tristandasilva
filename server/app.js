@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import { router as UserRouter } from './api/users.js';
 import { router as ProductRouter } from './api/products.js';
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 app.use('/users', UserRouter);
 app.use('/products', ProductRouter);
