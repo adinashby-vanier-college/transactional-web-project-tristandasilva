@@ -3,20 +3,22 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Poppins', 'sans-serif';
+  font-family: "Poppins", "sans-serif";
+  overflow-x: hidden;
 }
 
 .homescreen-bg {
-  background-image: url('./assets/homepage-bg.png');
+  background-image: url("./assets/homepage-bg.png");
   background-color: #3e3e47;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  height: fit-content;
 }
 
 .albumItemBox {
-  font-family: 'Inter', 'sans-serif';
+  font-family: "Inter", "sans-serif";
   position: relative;
   overflow: hidden;
   width: 100%;
