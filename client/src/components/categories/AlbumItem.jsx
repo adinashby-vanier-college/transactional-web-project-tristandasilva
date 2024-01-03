@@ -1,14 +1,34 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { Button } from "flowbite-react";
+import axios from "axios";
 
 const AlbumItem = (props) => {
+  const [id, setId] = useState(props.id);
+  async function addToCart() {
+    try {
+      await axios.post(
+        "http://localhost:5050/cart/products",
+        {
+          products: [{ product: id, qty: 1 }],
+        },
+        { withCredentials: true }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <div className="albumItemBox">
       <div className="max-h-[200px] overflow-hidden">
-        <img src={props.imageUrl}></img>
+        <img
+          crossOrigin="anonymous"
+          src={
+            "https://upload.wikimedia.org/wikipedia/en/9/93/KendrickGKMC.jpg?20131102010142"
+          }
+        ></img>
       </div>
       <div className="h-2/5 w-full absolute bottom-5 bg-[#00000099] flex justify-between px-1.5 py-0.5">
         <div className="flex flex-col justify-between w-4/5">
@@ -32,6 +52,7 @@ const AlbumItem = (props) => {
             size="sm"
             color="warning"
             className="p-0 rounded bg-[#000000] hover:bg-[#020101]"
+            onClick={addToCart}
           >
             <MdAddShoppingCart className="text-sm" />
           </Button>

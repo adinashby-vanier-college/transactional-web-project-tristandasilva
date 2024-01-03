@@ -10,6 +10,7 @@ const AlbumItemList = ({ vinyls }) => {
         vinyls.map((vinyl, index) => (
           <AlbumItem
             key={index}
+            id={vinyl._id}
             name={vinyl.title}
             genre={vinyl.genre}
             artists={vinyl.artist}

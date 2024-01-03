@@ -18,7 +18,7 @@ const staffAlbums = [
 ];
 
 router.get("/recent", async (req, res) => {
-  const response = await Product.find({ year: new Date().getFullYear() })
+  const response = await Product.find({ year: 2023 })
     .sort({ popularity: -1 })
     .limit(req.query.limit);
 
