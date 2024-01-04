@@ -6,7 +6,9 @@ function useQuery(url) {
   useEffect(() => {
     async function getData() {
       try {
-        const response = await axios.get(url);
+        const response = await axios.get(url, {
+          withCredentials: true,
+        });
         setData(response);
       } catch (err) {
         console.log(err);

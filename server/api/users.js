@@ -18,6 +18,11 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/logout', async (req, res) => {
+  res.clearCookie('token');
+  res.status(200).end();
+});
+
 router.post('/register', async (req, res) => {
   const user = new User({
     first_name: req.body.first_name,
@@ -39,8 +44,8 @@ router.post('/login', async (req, res) => {
     const user = await User.find({ email: req.body.email });
     const token = jwt.sign({ id: user[0]._id }, 'shhhhh');
     if (
-      user &&
-      (await verifyPassword(req.body.password, user[0].password, user[0].salt))
+      !user ||
+      !(await verifyPassword(req.body.password, user[0].password, user[0].salt))
     ) {
       res.send({ token: token, user: user[0] });
     } else {
@@ -48,6 +53,13 @@ router.post('/login', async (req, res) => {
         message: 'Incorrect password, try again.',
       });
     }
+    res
+      .cookie('token', token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None',
+      })
+      .send(token);
   } catch (err) {
     res.status(400).send({
       message: 'No user assiocated with this email.',
