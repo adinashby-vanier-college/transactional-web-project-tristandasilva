@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { Component, useState } from "react";
 import { Avatar, Dropdown, Navbar, Button } from "flowbite-react";
-import SearchBar from "./SeachBar";
-import LoginDropdown from "./LoginDropdown";
-import LoginForm from "./LoginForm";
+import SearchBar from "../SeachBar";
+
 import { Link } from "react-router-dom";
-import CartList from "./cart/CartList";
+import CartList from "../cart/CartList";
+import LoginDropdown from "./LoginDropdown";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -23,31 +23,16 @@ const Nav = () => {
             VinylVault
           </span>
         </Navbar.Brand>
-        <div className="flex gap-2 md:order-2 mr-3">
+        <div className="flex gap-3 items-center">
           <SearchBar></SearchBar>
-          <Dropdown
-            arrowIcon={false}
-            inline
-            className="bg-brand-darkgrey"
-            label={<Avatar alt="User settings" img="user-icon.svg" size="xs" />}
-          >
-            <div>
-              <Link to="/login">
-                <Button>LOGIN</Button>
-              </Link>
-              <Link to="/register">
-                <Button>REGISTER</Button>
-              </Link>
-            </div>
-          </Dropdown>
+          <LoginDropdown />
           <img
             onClick={() => {
               setOpen(!open);
             }}
             src="cart-icon.svg"
             alt="Cart icon"
-            width="25px"
-            height="25px"
+            className="h-8"
           ></img>
         </div>
       </Navbar>

@@ -1,6 +1,7 @@
-import express from "express";
+import express, { response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 import { router as UserRouter } from "./api/users.js";
 import { router as ProductRouter } from "./api/products.js";
@@ -17,7 +18,7 @@ process.on("uncaughtException", function (error) {
 });
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(cookieParser());
 
 app.use("/users", UserRouter);
