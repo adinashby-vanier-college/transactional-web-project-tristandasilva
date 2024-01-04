@@ -3,7 +3,7 @@ import { Button } from "flowbite-react";
 import axios from "axios";
 
 /* eslint-disable react/prop-types */
-function CartItem({ title, img, artist, price, qty, _id, deleteNode }) {
+function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
   const [quantity, setQty] = useState(qty);
   const [id, setId] = useState(_id);
 
@@ -15,12 +15,7 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode }) {
   }
   return (
     <div className="flex m-5 text-white" id={_id}>
-      <img
-        className="aspect-square h-28 p-1"
-        src={
-          "https://upload.wikimedia.org/wikipedia/en/9/93/KendrickGKMC.jpg?20131102010142"
-        }
-      ></img>
+      <img className="aspect-square h-28 p-1" src={img + secret}></img>
       <div className="flex justify-between w-full py-3 p-1">
         <div className="flex flex-col">
           <p>{title}</p>

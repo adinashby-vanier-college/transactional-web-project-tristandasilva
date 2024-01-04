@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  console.log(req.cookies.token);
   const token = jwt.verify(req.cookies.token, "shhhhh");
   try {
     const user = await User.findById(token.id);
@@ -14,6 +13,11 @@ router.get("/", async (req, res) => {
   } catch (error) {
     res.send("No user found");
   }
+});
+
+router.get("/logout", async (req, res) => {
+  res.clearCookie("token");
+  res.status(200).end();
 });
 
 router.post("/register", async (req, res) => {
@@ -44,7 +48,6 @@ router.post("/login", async (req, res) => {
         message: "Email or password is incorrect",
       });
     }
-
     res
       .cookie("token", token, {
         httpOnly: true,

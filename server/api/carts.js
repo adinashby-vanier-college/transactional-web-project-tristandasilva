@@ -3,6 +3,9 @@ import Cart from "../models/cart.js";
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import createCart from "../helpers/createCart.js";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "./.env" });
 
 const router = express.Router();
 
@@ -12,7 +15,7 @@ router.get("/", async (req, res) => {
   const cart = await Cart.findOne({ user: token.id }).populate(
     "products.product"
   );
-  res.send(cart);
+  res.send({ data: cart, secret: process.env.SECRET_STRING });
 });
 
 // Creates new cart if not there and adds objects takes in a array of products FORMAT(products: [{product, qty}])

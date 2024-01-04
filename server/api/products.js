@@ -3,7 +3,6 @@ import express, { query, response } from "express";
 import dotenv from "dotenv";
 
 import Product from "../models/product.js";
-
 dotenv.config({ path: "./.env" });
 
 const router = express.Router();
@@ -21,15 +20,14 @@ router.get("/recent", async (req, res) => {
   const response = await Product.find({ year: 2023 })
     .sort({ popularity: -1 })
     .limit(req.query.limit);
-
-  res.send(response);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
 router.get("/genre/:id", async (req, res) => {
   const response = await Product.find({ genre: req.params.id }).limit(
     req.query.limit
   );
-  res.send(response);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
 router.get("/search", async (req, res) => {
@@ -46,7 +44,7 @@ router.get("/search", async (req, res) => {
     .sort({ popularity: -1 })
     .limit(req.query.limit);
 
-  res.send(response);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
 router.get("/trending", async (req, res) => {
@@ -54,7 +52,7 @@ router.get("/trending", async (req, res) => {
     .sort({ popularity: -1 })
     .limit(req.query.limit);
 
-  res.send(response);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
 router.get("/discover", async (req, res) => {
@@ -62,9 +60,9 @@ router.get("/discover", async (req, res) => {
 
   const response = await Product.aggregate([
     { $sample: { size: length } },
-  ]).limit(1);
+  ]).limit(50);
 
-  res.send(response);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
 router.get("/staff", async (req, res) => {
@@ -73,7 +71,7 @@ router.get("/staff", async (req, res) => {
       return e;
     }),
   });
-  res.send(response);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
 export { router };

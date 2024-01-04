@@ -1,6 +1,7 @@
 import express, { response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 import { router as UserRouter } from "./api/users.js";
 import { router as ProductRouter } from "./api/products.js";
@@ -8,13 +9,6 @@ import { router as CartRouter } from "./api/carts.js";
 
 import db from "./config/db.js";
 
-const header = {
-  Authorization:
-    "Discogs key=" +
-    process.env.CUSTOMER_KEY +
-    ", secret=" +
-    process.env.CUSTOMER_SECERT,
-};
 db();
 
 const app = express();

@@ -23,12 +23,7 @@ const AlbumItem = (props) => {
   return (
     <div className="albumItemBox">
       <div className="max-h-[200px] overflow-hidden">
-        <img
-          crossOrigin="anonymous"
-          src={
-            "https://upload.wikimedia.org/wikipedia/en/9/93/KendrickGKMC.jpg?20131102010142"
-          }
-        ></img>
+        <img src={props.imageUrl + props.secret}></img>
       </div>
       <div className="h-2/5 w-full absolute bottom-5 bg-[#00000099] flex justify-between px-1.5 py-0.5">
         <div className="flex flex-col justify-between w-4/5">
