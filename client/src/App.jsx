@@ -8,7 +8,6 @@ function App() {
       <Outlet />
     </div>
   );
-  // <HomeScreen className='h-screen' />;
 }
 
 export default App;

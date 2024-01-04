@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './forms/LoginForm';
 
 const LoginDropdown = () => {
   return (
