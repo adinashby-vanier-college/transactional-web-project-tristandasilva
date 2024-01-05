@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { Component, useState, useEffect } from 'react';
 import Nav from '../components/nav/Nav';
 import '../index.css';
