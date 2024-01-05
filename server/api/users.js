@@ -34,9 +34,13 @@ router.post('/register', async (req, res) => {
   try {
     const newUser = await user.save();
     const token = jwt.sign(JSON.stringify(newUser), 'shhhhh');
-    res.send(token);
+    res.send({ token: token, user: newUser });
   } catch (err) {
-    res.send('Unable to create user: ' + err);
+    err.code == 11000 // This code is for duplicate email
+      ? res
+          .status(401)
+          .send({ message: 'User already associated with this email.' })
+      : res.status(400).send({ message: 'Registration unsuccessful' });
   }
 });
 

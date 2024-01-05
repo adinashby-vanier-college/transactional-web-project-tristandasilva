@@ -1,15 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'flowbite-react';
+import axios from 'axios';
+import setCookies from '../../../helpers/setCookies';
+import Cookies from 'js-cookie';
+import { Navigate } from 'react-router-dom';
+
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confimedPass, setConfirmedPass] = useState('');
+  const [confirmedPass, setConfirmedPass] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const register = (e) => {
+    e.preventDefault();
+    if (password != confirmedPass) {
+      setErrorMessage('Passwords do not match.');
+    } else {
+      axios
+        .post('http://localhost:5050/users/register', {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          setCookies(res.data);
+          setSuccessMessage('Registration successful!');
+          if (errorMessage) {
+            setErrorMessage('');
+          }
+          setTimeout(() => {
+            location.reload();
+          }, 1200);
+        })
+        .catch((err) => {
+          setErrorMessage(err.response.data.message);
+        });
+    }
+  };
 
   return (
     <div className='authModal'>
-      <form className='flex flex-col gap-6'>
+      <form className='flex flex-col gap-6' onSubmit={register}>
         <div className='flex flex-col gap-1'>
           <label>First name</label>
           <input
@@ -49,16 +84,17 @@ const RegisterForm = () => {
         <div className='flex flex-col gap-1'>
           <label>Confirm password</label>
           <input
-            type='text'
+            type='password'
             placeholder='Confirmed pass'
-            value={confimedPass}
+            value={confirmedPass}
             onChange={(e) => setConfirmedPass(e.target.value)}
           />
         </div>
+        {successMessage && <p className='text-sm success'>{successMessage}</p>}
+        {errorMessage && <p className='text-sm error'>{errorMessage}</p>}
         <Button type='submit' className='bg-brand-darkorange mt-5 rounded-md'>
           Register
         </Button>
-        {/* {errorMessage && <p className='error'> {errorMessage} </p>} */}
       </form>
     </div>
   );

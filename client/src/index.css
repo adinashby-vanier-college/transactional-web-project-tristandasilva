@@ -38,6 +38,10 @@ body {
   color: #f06060;
 }
 
+.success {
+  color: #3abe5f;
+}
+
 /* --- CUSTOM SCROLL BAR --- */
 
 /* width */

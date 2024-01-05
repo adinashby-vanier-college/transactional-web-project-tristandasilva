@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import express, { query, response } from 'express';
 import dotenv from 'dotenv';
 

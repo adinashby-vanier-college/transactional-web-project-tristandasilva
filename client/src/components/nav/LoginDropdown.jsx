@@ -7,7 +7,6 @@ import Cookies from 'js-cookie';
 
 const LoginDropdown = () => {
   const [open, setOpen] = useState(false);
-  // const response = useQuery('http://localhost:5050/users/');
   const user = useUserFound();
 
   const logout = (e) => {
@@ -33,14 +32,7 @@ const LoginDropdown = () => {
               <p className='whitespace-nowrap text-xl font-extralight'>
                 Hello, {user.first_name}
               </p>
-              <form
-                onSubmit={logout}
-                // onSubmit={async () => {
-                //   await axios.get('http://localhost:5050/users/logout', {
-                //     withCredentials: true,
-                //   });
-                // }}
-              >
+              <form onSubmit={logout}>
                 <input
                   className='bg-red-800 p-2 w-32 text-md m-3 rounded-lg'
                   type='submit'

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import setCookies from '../../../helpers/setCookies';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  const envMode = 'development';
 
   const login = (e) => {
     e.preventDefault();
@@ -20,12 +18,7 @@ const LoginForm = () => {
       .then((res) => {
         if (res.status == 200) {
           console.log(res);
-          Cookies.set('token', res.data.token, {
-            secure: envMode === 'production',
-          });
-          Cookies.set('user', JSON.stringify(res.data.user), {
-            secure: envMode === 'production',
-          });
+          setCookies(res.data);
           location.reload();
         }
       })
@@ -39,16 +32,7 @@ const LoginForm = () => {
       });
   };
   return (
-    <form
-      className='text-white'
-      onSubmit={login}
-      // onSubmit={async (e) => {
-      //   e.preventDefault();
-      //   await loginForm().then(() => {
-      //     location.reload();
-      //   });
-      // }}
-    >
+    <form className='text-white' onSubmit={login}>
       <div className='mb-3'>
         <label className='font-thin'>Email</label>
         <input
@@ -70,7 +54,7 @@ const LoginForm = () => {
           <p className='my-2 text-sm'>Forgot Password?</p>
         </Link>
       </div>
-      <div className='text-xs error'>{errorMessage}</div>
+      {errorMessage && <p className='text-xs error'>{errorMessage}</p>}
       <div className='flex items-center gap-5 mt-5'>
         <Link to={'/register'}>
           <p className='whitespace-nowrap underline underline-offset-4'>
