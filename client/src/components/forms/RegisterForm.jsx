@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'flowbite-react';
 import axios from 'axios';
 import setCookies from '../../../helpers/setCookies';
-import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
