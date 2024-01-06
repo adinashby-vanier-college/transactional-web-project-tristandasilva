@@ -50,17 +50,19 @@ const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Link to={'/register'}>
-          <p className='my-2 text-sm'>Forgot Password?</p>
-        </Link>
+        <p className='my-2 text-sm'>Forgot Password?</p>
       </div>
       {errorMessage && <p className='text-xs error'>{errorMessage}</p>}
       <div className='flex items-center gap-5 mt-5'>
-        <Link to={'/register'}>
-          <p className='whitespace-nowrap underline underline-offset-4'>
-            Register Here
-          </p>
-        </Link>
+        <p
+          className='whitespace-nowrap underline underline-offset-4 cursor-pointer'
+          onClick={(e) => {
+            localStorage.setItem('registerView', true);
+            // window.dispatchEvent(new Event('storage'));
+          }}
+        >
+          Register Here
+        </p>
         <input
           className='bg-yellow-500 px-3 p-2 rounded-lg w-full cursor-pointer'
           type='submit'

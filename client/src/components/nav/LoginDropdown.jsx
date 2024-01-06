@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from '../forms/LoginForm';
 import useQuery from '../../hooks/useQuery';
 import axios from 'axios';
 import useUserFound from '../../hooks/useUserFound';
@@ -8,8 +8,12 @@ import RegisterForm from '../forms/RegisterForm';
 
 const LoginDropdown = () => {
   const [open, setOpen] = useState(false);
-  const [registerView, setRegisterView] = useState(false);
+  const [registerView, setRegisterView] = useState(
+    localStorage.getItem('registerView')
+  );
   const user = useUserFound();
+
+  // localStorage.setItem('registerView', registerView);
 
   const logout = (e) => {
     e.preventDefault();
@@ -42,9 +46,10 @@ const LoginDropdown = () => {
                 />
               </form>
             </div>
-          ) : (
-            //<LoginForm />
+          ) : localStorage.getItem('registerView') == 'true' ? (
             <RegisterForm />
+          ) : (
+            <LoginForm />
           )}
         </div>
       )}

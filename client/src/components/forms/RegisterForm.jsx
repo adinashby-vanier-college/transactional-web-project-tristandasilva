@@ -91,7 +91,13 @@ const RegisterForm = () => {
       {errorMessage && <p className='error'>{errorMessage}</p>}
       {successMessage && <p className='success'>{successMessage}</p>}
       <div className='flex items-center gap-5 mt-5'>
-        <p className='whitespace-nowrap underline underline-offset-4'>
+        <p
+          className='whitespace-nowrap underline underline-offset-4 cursor-pointer'
+          onClick={(e) => {
+            localStorage.setItem('registerView', false);
+            // window.dispatchEvent(new Event('storage'));
+          }}
+        >
           I have an account.
         </p>
         <input
