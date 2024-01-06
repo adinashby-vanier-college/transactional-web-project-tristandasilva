@@ -4,9 +4,11 @@ import useQuery from '../../hooks/useQuery';
 import axios from 'axios';
 import useUserFound from '../../hooks/useUserFound';
 import Cookies from 'js-cookie';
+import RegisterForm from '../forms/RegisterForm';
 
 const LoginDropdown = () => {
   const [open, setOpen] = useState(false);
+  const [registerView, setRegisterView] = useState(false);
   const user = useUserFound();
 
   const logout = (e) => {
@@ -26,7 +28,7 @@ const LoginDropdown = () => {
         }}
       ></img>
       {open && (
-        <div className='absolute h-fit m-3 p-4 shadow-lg rounded-md bg-neutral-800 z-40 flex justify-start top-7 -right-7'>
+        <div className='absolute h-fit m-3 p-4 shadow-lg rounded-md bg-neutral-800 z-40 flex flex-col justify-start top-7 -right-7'>
           {user ? (
             <div className='flex flex-col items-center text-white'>
               <p className='whitespace-nowrap text-xl font-extralight'>
@@ -41,7 +43,8 @@ const LoginDropdown = () => {
               </form>
             </div>
           ) : (
-            <LoginForm />
+            //<LoginForm />
+            <RegisterForm />
           )}
         </div>
       )}
