@@ -65,32 +65,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// router.post('/login', async (req, res) => {
-//   try {
-//     const user = await User.find({ email: req.body.email });
-//     const token = jwt.sign({ id: user[0]._id }, 'shhhhh');
-//     if (
-//       !user ||
-//       !(await verifyPassword(req.body.password, user[0].password, user[0].salt))
-//     ) {
-//       res.send({ token: token, user: user[0] });
-//     } else {
-//       res.status(401).send({
-//         message: 'Incorrect password, try again.',
-//       });
-//     }
-//     res
-//       .cookie('token', token, {
-//         httpOnly: true,
-//         secure: true,
-//         sameSite: 'None',
-//       })
-//       .send(token);
-//   } catch (err) {
-//     res.status(400).send({
-//       message: 'No user assiocated with this email.',
-//     });
-//   }
-// });
-
 export { router };

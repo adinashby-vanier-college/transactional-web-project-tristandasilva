@@ -11,7 +11,6 @@ const router = express.Router();
 
 // Gets the users cart information
 router.get('/', async (req, res) => {
-  console.log(req.cookies.token);
   const token = jwt.verify(req.cookies.token, 'shhhhh');
   const cart = await Cart.findOne({ user: token.id }).populate(
     'products.product'
