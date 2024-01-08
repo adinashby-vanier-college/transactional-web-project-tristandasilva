@@ -7,25 +7,18 @@ import SearchBar from '../SeachBar';
 import { Link } from 'react-router-dom';
 import CartList from '../cart/CartList';
 import LoginDropdown from './LoginDropdown';
+import NavTabs from './NavTabs';
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
 
-  const user = useUserFound();
-  const token = Cookies.get('token');
-
-  const logout = (e) => {
-    e.preventDefault();
-    Cookies.remove('token', { path: '' });
-    Cookies.remove('user', { path: '' });
-    Cookies.get('token') ? alert('Logout failed') : history.go(0);
-  };
+  localStorage.setItem('registerView', false);
 
   return (
     <>
       {open && <CartList onClick={setOpen} />}
       <Navbar fluid className='bg-brand-darkgrey'>
-        <Navbar.Brand href='#'>
+        <Navbar.Brand href='/'>
           <img
             src='logo.svg'
             className='ml-3 mr-3 h-6 sm:h-9'
@@ -48,13 +41,7 @@ const Nav = () => {
           ></img>
         </div>
       </Navbar>
-      <div className='h-8 text-white px-40 flex justify-between items-center bg-[#8CBEB270]'>
-        <p>Genre</p>
-        <p>Trending</p>
-        <p>Recent</p>
-        <p>Discount</p>
-        <p>Discovery</p>
-      </div>
+      <NavTabs />
     </>
   );
 };

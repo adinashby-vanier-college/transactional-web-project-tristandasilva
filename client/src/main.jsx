@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import HomeScreen from './screens/HomeScreen.jsx';
+import TrendingScreen from './screens/TrendingScreen.jsx';
+import RecentScreen from './screens/RecentScreen.jsx';
+import DiscountScreen from './screens/DiscountScreen.jsx';
 import './index.css';
 import {
   createBrowserRouter,
@@ -9,13 +12,19 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
+import GenreScreen from './screens/GenreScreen.jsx';
+import DiscoverScreen from './screens/DiscoverScreen.jsx';
 // import RegisterScreen from './screens/RegisterScreen.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
-      {/* <Route path="/register" element={<RegisterScreen />} /> */}
+      <Route path='/genre' element={<GenreScreen />} />
+      <Route path='/trending' element={<TrendingScreen />} />
+      <Route path='/recent' element={<RecentScreen />} />
+      <Route path='/discount' element={<DiscountScreen />} />
+      <Route path='/discover' element={<DiscoverScreen />} />
     </Route>
   )
 );

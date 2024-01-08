@@ -28,7 +28,7 @@ body {
   font-family: 'Inter', 'sans-serif';
   position: relative;
   overflow: hidden;
-  width: 100%;
+  max-width: 5%;
   min-width: 200px;
   padding-bottom: 20px;
   padding-top: 20px;

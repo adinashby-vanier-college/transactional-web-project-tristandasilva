@@ -22,10 +22,18 @@ router.get('/recent', async (req, res) => {
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
+router.get('/discount', async (req, res) => {
+  const response = await Product.find({ price: { $lt: 10 } })
+    .sort({ popularity: -1 })
+    .limit(req.query.limit);
+  res.send({ data: response, secret: process.env.SECRET_STRING });
+});
+
 router.get('/genre/:id', async (req, res) => {
-  const response = await Product.find({ genre: req.params.id }).limit(
-    req.query.limit
-  );
+  const reqGenre = req.params.id;
+  const response = await Product.find({
+    genre: reqGenre,
+  }).limit(req.query.limit);
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 

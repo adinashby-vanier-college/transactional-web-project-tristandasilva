@@ -15,7 +15,7 @@ const urls = [
 
 const HomeScreen = () => {
   return (
-    <div className='h-full homescreen-bg'>
+    <div className='h-full'>
       <Nav></Nav>
       <div className='w-11/12 h-fit m-auto py-16 bg-brand-darkgrey px-24 flex flex-col gap-y-20'>
         <CategoryList category={'Newly Added'} icon={starIcon} url={urls[0]} />
