@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import AlbumItemList from './AlbumItemList';
 import useQuery from '../../hooks/useQuery';
 

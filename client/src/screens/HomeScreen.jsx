@@ -1,12 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import Nav from '../components/nav/Nav';
 import '../index.css';
 import CategoryList from '../components/category/CategoryList';
 import starIcon from '../../public/star-icon.svg';
 import flamesIcon from '../../public/flames-icon.svg';
 import purpleHeart from '../../public/purpleheart-icon.svg';
-import axios from 'axios';
-
 const urls = [
   'http://localhost:5050/products/recent?limit=30',
   'http://localhost:5050/products/trending?limit=30',

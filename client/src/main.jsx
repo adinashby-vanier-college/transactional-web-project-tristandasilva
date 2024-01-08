@@ -14,7 +14,6 @@ import {
 } from 'react-router-dom';
 import GenreScreen from './screens/GenreScreen.jsx';
 import DiscoverScreen from './screens/DiscoverScreen.jsx';
-// import RegisterScreen from './screens/RegisterScreen.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

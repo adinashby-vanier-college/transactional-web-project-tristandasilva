@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import useQuery from '../../hooks/useQuery';
 import CartItemList from './CartItemList';
 

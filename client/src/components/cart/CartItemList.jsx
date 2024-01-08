@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import CartItem from './CartItem';
 
 function CartItemList({ data }) {

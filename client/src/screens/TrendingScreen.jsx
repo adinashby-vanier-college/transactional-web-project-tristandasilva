@@ -1,8 +1,5 @@
 import React from 'react';
 import Nav from '../components/nav/Nav';
-import CategoryList from '../components/category/CategoryList';
-import useQuery from '../hooks/useQuery';
-import AlbumItem from '../components/category/AlbumItem';
 import CategoryGrid from '../components/category/CategoryGrid';
 
 const TrendingScreen = () => {

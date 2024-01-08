@@ -1,10 +1,6 @@
-import Cookies from 'js-cookie';
-import useUserFound from '../../hooks/useUserFound';
-import React, { Component, useState } from 'react';
-import { Avatar, Dropdown, Navbar, Button } from 'flowbite-react';
-import SearchBar from '../SeachBar';
-
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Navbar } from 'flowbite-react';
+import SearchBar from './SeachBar';
 import CartList from '../cart/CartList';
 import LoginDropdown from './LoginDropdown';
 import NavTabs from './NavTabs';
