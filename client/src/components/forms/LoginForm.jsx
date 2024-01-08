@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import setCookies from '../../../helpers/setCookies';
 
-const LoginForm = () => {
+const LoginForm = ({ change }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -58,6 +58,7 @@ const LoginForm = () => {
           className='whitespace-nowrap underline underline-offset-4 cursor-pointer'
           onClick={(e) => {
             localStorage.setItem('registerView', true);
+            change();
             // window.dispatchEvent(new Event('storage'));
           }}
         >

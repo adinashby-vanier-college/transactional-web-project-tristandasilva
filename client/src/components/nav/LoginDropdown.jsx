@@ -8,18 +8,20 @@ import RegisterForm from '../forms/RegisterForm';
 
 const LoginDropdown = () => {
   const [open, setOpen] = useState(false);
-  const [registerView, setRegisterView] = useState(
-    localStorage.getItem('registerView')
-  );
   const user = useUserFound();
-
-  // localStorage.setItem('registerView', registerView);
 
   const logout = (e) => {
     e.preventDefault();
     Cookies.remove('token', { path: '' });
     Cookies.remove('user', { path: '' });
     Cookies.get('token') ? alert('Logout failed') : location.reload();
+  };
+
+  const toggleView = () => {
+    setOpen(!open);
+    setTimeout(() => {
+      setOpen(true);
+    }, 1);
   };
 
   return (
@@ -47,9 +49,9 @@ const LoginDropdown = () => {
               </form>
             </div>
           ) : localStorage.getItem('registerView') == 'true' ? (
-            <RegisterForm />
+            <RegisterForm change={toggleView} />
           ) : (
-            <LoginForm />
+            <LoginForm change={toggleView} />
           )}
         </div>
       )}

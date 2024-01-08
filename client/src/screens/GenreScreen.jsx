@@ -1,7 +1,10 @@
 import React from 'react';
 import Nav from '../components/nav/Nav';
 import CategoryList from '../components/category/CategoryList';
-import starIcon from '../../public/star-icon.svg';
+import guitarIcon from '../../public/electric-guitar.png';
+import popIcon from '../../public/spotlight.png';
+import hipHopIcon from '../../public/hip-hop.png';
+import electronicIcon from '../../public/robot.png';
 
 const GenreScreen = () => {
   const urls = [
@@ -15,10 +18,30 @@ const GenreScreen = () => {
     <div className='h-full homescreen-bg'>
       <Nav></Nav>
       <div className='w-11/12 h-fit m-auto py-16 bg-brand-darkgrey px-24 flex flex-col gap-y-20'>
-        <CategoryList category={'Rock'} icon={starIcon} url={urls[0]} />
-        <CategoryList category={'Pop'} icon={starIcon} url={urls[1]} />
-        <CategoryList category={'Electronic'} icon={starIcon} url={urls[2]} />
-        <CategoryList category={'Hip Hop'} icon={starIcon} url={urls[3]} />
+        <CategoryList
+          category={'Hip Hop'}
+          icon={hipHopIcon}
+          iconWidth={'25px'}
+          url={urls[3]}
+        />
+        <CategoryList
+          category={'Rock'}
+          icon={guitarIcon}
+          iconWidth={'30px'}
+          url={urls[0]}
+        />
+        <CategoryList
+          category={'Electronic'}
+          icon={electronicIcon}
+          iconWidth={'30px'}
+          url={urls[2]}
+        />
+        <CategoryList
+          category={'Pop'}
+          icon={popIcon}
+          iconWidth={'25px'}
+          url={urls[1]}
+        />
       </div>
     </div>
   );

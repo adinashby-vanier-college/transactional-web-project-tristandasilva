@@ -4,7 +4,7 @@ import axios from 'axios';
 import setCookies from '../../../helpers/setCookies';
 import { Link } from 'react-router-dom';
 
-const RegisterForm = () => {
+const RegisterForm = ({ change }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmedPass, setConfirmedPass] = useState('');
@@ -95,6 +95,7 @@ const RegisterForm = () => {
           className='whitespace-nowrap underline underline-offset-4 cursor-pointer'
           onClick={(e) => {
             localStorage.setItem('registerView', false);
+            change();
             // window.dispatchEvent(new Event('storage'));
           }}
         >
