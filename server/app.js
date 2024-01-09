@@ -20,17 +20,17 @@ process.on('uncaughtException', function (error) {
 });
 
 const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = path.dirname(__filename);
 
 // to redirect frontend
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '/client/dist')));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '../client/build/index.html'));
+  console.log(req);
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 app.use(cookieParser());
 
 app.use('/users', UserRouter);
@@ -40,3 +40,5 @@ app.use('/cart', CartRouter);
 
 app.listen(process.env.PORT);
 console.log('Server is listening on port ' + process.env.PORT);
+console.log(__filename);
+console.log(__dirname);
