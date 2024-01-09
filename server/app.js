@@ -20,13 +20,13 @@ process.on('uncaughtException', function (error) {
 });
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = '/home/ubuntu/transactional-web-project-tristandasilva';
+const __dirname = path.dirname(__filename);
 
 // to redirect frontend
-app.use(express.static('../client/dist/index.html'));
+app.use(express.static(path.join(__dirname, '..', 'client')));
 
 app.get('/', (req, res) => {
-  res.sendFile('../client/dist/index.html');
+  res.sendFile(path.join(__dirname + '..', 'client', 'dist', 'index.html'));
 });
 
 app.use(express.json());
@@ -40,5 +40,5 @@ app.use('/cart', CartRouter);
 
 app.listen(process.env.PORT);
 console.log('Server is listening on port ' + process.env.PORT);
-console.log(__dirname);
-console.log(path.join(__dirname, '../client/dist'));
+// console.log(__dirname);
+console.log(path.join(__dirname, '..', 'client', 'dist'));
