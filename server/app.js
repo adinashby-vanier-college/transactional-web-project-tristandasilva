@@ -1,6 +1,7 @@
 import express, { response } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import * as path from 'path';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import { router as UserRouter } from './api/users.js';
