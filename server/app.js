@@ -29,7 +29,12 @@ app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('/', (req, res) => {
   console.log(req);
-  res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+  res.sendFile(
+    path.join(
+      __dirname +
+        'transactional-web-project-tristandasilva/client/dist/index.html'
+    )
+  );
 });
 
 app.use(express.json());
