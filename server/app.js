@@ -1,7 +1,8 @@
 import express, { response } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import * as path from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import { router as UserRouter } from './api/users.js';
@@ -17,6 +18,10 @@ const app = express();
 process.on('uncaughtException', function (error) {
   console.log(error.stack);
 });
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 // to redirect frontend
 app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -34,4 +39,4 @@ app.use('/cart', CartRouter);
 //app.use("/wishlist")
 
 app.listen(process.env.PORT);
-console.log('Server is listening on port' + process.env.PORT);
+console.log('Server is listening on port ' + process.env.PORT);
