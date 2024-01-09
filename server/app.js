@@ -23,10 +23,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // to redirect frontend
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('/', (req, res) => {
   console.log(req);
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
 });
 
 app.use(express.json());
@@ -40,5 +40,5 @@ app.use('/cart', CartRouter);
 
 app.listen(process.env.PORT);
 console.log('Server is listening on port ' + process.env.PORT);
-console.log(__filename);
 console.log(__dirname);
+console.log(path.join(__dirname, '../client/dist'));
