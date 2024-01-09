@@ -17,6 +17,12 @@ process.on('uncaughtException', function (error) {
   console.log(error.stack);
 });
 
+// to redirect frontend
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
+});
+
 app.use(express.json());
 app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 app.use(cookieParser());
