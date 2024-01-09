@@ -20,21 +20,13 @@ process.on('uncaughtException', function (error) {
 });
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(
-  '/home/ubuntu/transactional-web-project-tristandasilva'
-);
+const __dirname = '/home/ubuntu/transactional-web-project-tristandasilva';
 
 // to redirect frontend
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static('../client/dist/index.html'));
 
 app.get('/', (req, res) => {
-  console.log(req);
-  res.sendFile(
-    path.join(
-      __dirname +
-        'transactional-web-project-tristandasilva/client/dist/index.html'
-    )
-  );
+  res.sendFile('../client/dist/index.html');
 });
 
 app.use(express.json());
