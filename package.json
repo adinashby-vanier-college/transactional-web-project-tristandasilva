@@ -1,0 +1,11 @@
+{
+  "name": "transactional-web-project-tristandasilva",
+  "version": "1.0.0",
+  "description": "This template repository is the starter project for Transactional Web App. project. Written in HTML/CSS/JavaScript/React.js/Node.js/Express.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
