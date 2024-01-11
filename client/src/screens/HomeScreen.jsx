@@ -8,9 +8,9 @@ import purpleHeart from '../assets/purpleheart-icon.svg';
 import axios from 'axios';
 
 const urls = [
-  'http://localhost:5050/products/recent?limit=30',
-  'http://localhost:5050/products/trending?limit=30',
-  'http://localhost:5050/products/staff',
+  '/products/recent?limit=30',
+  '/products/trending?limit=30',
+  '/products/staff',
 ];
 
 const HomeScreen = () => {

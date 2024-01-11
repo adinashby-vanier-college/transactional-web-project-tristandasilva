@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import searchIcon from '../assets/search-icon.svg';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -18,7 +19,7 @@ const SearchBar = () => {
         className='bg-[#00000000] border-none w-10/12 text-[#ffffff70]'
       ></input>
       <img
-        src='/search-icon.svg'
+        src={searchIcon}
         alt='Search bar icon'
         width='25px'
         height='25px'

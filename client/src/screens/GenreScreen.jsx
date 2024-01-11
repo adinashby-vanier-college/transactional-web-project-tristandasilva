@@ -8,10 +8,10 @@ import electronicIcon from '../assets/robot.png';
 
 const GenreScreen = () => {
   const urls = [
-    'http://localhost:5050/products/genre/Rock?limit=30',
-    'http://localhost:5050/products/genre/Pop?limit=30',
-    'http://localhost:5050/products/genre/Electronic?limit=30',
-    'http://localhost:5050/products/genre/Hip Hop?limit=30',
+    '/products/genre/Rock?limit=30',
+    '/products/genre/Pop?limit=30',
+    '/products/genre/Electronic?limit=30',
+    '/products/genre/Hip Hop?limit=30',
   ];
 
   return (

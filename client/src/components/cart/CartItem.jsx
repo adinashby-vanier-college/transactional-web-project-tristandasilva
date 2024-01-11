@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Button } from "flowbite-react";
-import axios from "axios";
+import { useState } from 'react';
+import { Button } from 'flowbite-react';
+import axios from 'axios';
+import exitIcon from '../../assets/exit.svg';
 
 /* eslint-disable react/prop-types */
 function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
@@ -8,34 +9,34 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
   const [id, setId] = useState(_id);
 
   async function deleteItem() {
-    await axios.delete("http://localhost:5050/cart/products", {
+    await axios.delete('http://localhost:5050/cart/products', {
       withCredentials: true,
       data: { product: id },
     });
   }
   return (
-    <div className="flex m-5 text-white" id={_id}>
-      <img className="aspect-square h-28 p-1" src={img + secret}></img>
-      <div className="flex justify-between w-full py-3 p-1">
-        <div className="flex flex-col">
+    <div className='flex m-5 text-white' id={_id}>
+      <img className='aspect-square h-28 p-1' src={img + secret}></img>
+      <div className='flex justify-between w-full py-3 p-1'>
+        <div className='flex flex-col'>
           <p>{title}</p>
-          <p className="text-neutral-500">{artist}</p>
+          <p className='text-neutral-500'>{artist}</p>
           <Button.Group>
             <Button
-              className="bg-neutral-900 hover:bg-neutral-700 transition-all"
-              color="fff"
+              className='bg-neutral-900 hover:bg-neutral-700 transition-all'
+              color='fff'
               onClick={() => {
                 setQty(quantity - 1);
               }}
             >
               -
             </Button>
-            <p className="aspect-square h-full flex items-center justify-center">
+            <p className='aspect-square h-full flex items-center justify-center'>
               {quantity}
             </p>
             <Button
-              color="fff"
-              className="bg-neutral-900 hover:bg-neutral-700 transition-all"
+              color='fff'
+              className='bg-neutral-900 hover:bg-neutral-700 transition-all'
               onClick={() => {
                 setQty(quantity + 1);
               }}
@@ -44,16 +45,16 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
             </Button>
           </Button.Group>
         </div>
-        <div className="flex flex-col items-end">
+        <div className='flex flex-col items-end'>
           <p>${price}</p>
           <button
-            className="my-3 aspect-square h-5"
+            className='my-3 aspect-square h-5'
             onClick={() => {
               deleteNode(_id);
               deleteItem();
             }}
           >
-            <img src="/public/exit.svg"></img>
+            <img src={exitIcon}></img>
           </button>
         </div>
       </div>
