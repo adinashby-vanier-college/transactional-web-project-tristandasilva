@@ -8,7 +8,7 @@ const AlbumItem = (props) => {
   async function addToCart() {
     try {
       await axios.post(
-        'http://localhost:5050/cart/products',
+        '/cart/products',
         {
           products: [{ product: id, qty: 1 }],
         },
