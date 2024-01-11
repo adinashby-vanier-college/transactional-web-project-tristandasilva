@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import { Link } from "react-router-dom";
 import searchIcon from '../assets/search-icon.svg';
 
 const SearchBar = () => {
