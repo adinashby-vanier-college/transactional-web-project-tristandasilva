@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useState } from 'react';
+import searchIcon from '../assets/search-icon.svg';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -20,14 +20,12 @@ const SearchBar = () => {
         value={searchInput}
         className="bg-[#00000000] border-none w-10/12 text-[#ffffff70]"
       ></input>
-      <Link to={`/search${"?q=" + searchInput}`}>
-        <img
-          src="../public/search-icon.svg"
-          alt="Search bar icon"
-          width="25px"
-          height="25px"
-        ></img>
-      </Link>
+      <img
+        src={searchIcon}
+        alt='Search bar icon'
+        width='25px'
+        height='25px'
+      ></img>
     </div>
   );
 };

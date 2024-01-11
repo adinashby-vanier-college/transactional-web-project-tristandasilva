@@ -1,7 +1,5 @@
 import React, { Component, useState } from 'react';
 import LoginForm from '../forms/LoginForm';
-import useQuery from '../../hooks/useQuery';
-import axios from 'axios';
 import useUserFound from '../../hooks/useUserFound';
 import Cookies from 'js-cookie';
 import RegisterForm from '../forms/RegisterForm';
