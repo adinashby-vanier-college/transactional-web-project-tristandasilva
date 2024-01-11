@@ -12,7 +12,7 @@ function CartList(props) {
     <div className=" bg-neutral-800 text-white h-screen fixed w-1/4 right-0 z-50 flex flex-col animate-slide-r  lg:w-full">
       <div className="flex justify-between items-center border-b-2 p-5">
         <div className="flex  text-2xl items-center">
-          Cart&nbsp;<img src="/public/tag.svg"></img>
+          Cart&nbsp;<img src={tagIcon}></img>
         </div>
         <button
           className="aspect-square h-10 cursor-pointer"
