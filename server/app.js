@@ -22,7 +22,7 @@ process.on('uncaughtException', function (error) {
 app.use(express.static(buildPath));
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+app.use(cors({ credentials: true, origin: 'http://http://99.79.60.159:5050' }));
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
