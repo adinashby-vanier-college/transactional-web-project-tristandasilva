@@ -40,5 +40,4 @@ app.use('/products', ProductRouter);
 app.use('/cart', CartRouter);
 
 app.listen(process.env.PORT);
-console.log('Server is listening on port ' + process.env.PORT);
 console.log(path.join(_dirname, '../client/dist/index.html'));
