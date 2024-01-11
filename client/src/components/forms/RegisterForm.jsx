@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'flowbite-react';
-import axios from 'axios';
+import axios from '../../api/axiosConfig';
 import setCookies from '../../../helpers/setCookies';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ const RegisterForm = ({ change }) => {
       setErrorMessage('Passwords do not match.');
     } else {
       axios
-        .post('http://localhost:5050/users/register', {
+        .post('/users/register', {
           first_name: firstName,
           last_name: lastName,
           email: email,

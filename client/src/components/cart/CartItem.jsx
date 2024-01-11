@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from 'flowbite-react';
-import axios from 'axios';
+import axios from '../../api/axiosConfig';
 import exitIcon from '../../assets/exit.svg';
 
 /* eslint-disable react/prop-types */
@@ -9,7 +9,7 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
   const [id, setId] = useState(_id);
 
   async function deleteItem() {
-    await axios.delete('http://localhost:5050/cart/products', {
+    await axios.delete('/cart/products', {
       withCredentials: true,
       data: { product: id },
     });
