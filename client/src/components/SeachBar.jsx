@@ -18,7 +18,7 @@ const SearchBar = () => {
         className='bg-[#00000000] border-none w-10/12 text-[#ffffff70]'
       ></input>
       <img
-        src='../public/search-icon.svg'
+        src='/search-icon.svg'
         alt='Search bar icon'
         width='25px'
         height='25px'

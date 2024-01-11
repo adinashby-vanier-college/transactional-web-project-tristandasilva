@@ -1,10 +1,10 @@
 import React from 'react';
 import Nav from '../components/nav/Nav';
 import CategoryList from '../components/category/CategoryList';
-import guitarIcon from '../../public/electric-guitar.png';
-import popIcon from '../../public/spotlight.png';
-import hipHopIcon from '../../public/hip-hop.png';
-import electronicIcon from '../../public/robot.png';
+import guitarIcon from '../assets/electric-guitar.png';
+import popIcon from '../assets/spotlight.png';
+import hipHopIcon from '../assets/hip-hop.png';
+import electronicIcon from '../assets/robot.png';
 
 const GenreScreen = () => {
   const urls = [

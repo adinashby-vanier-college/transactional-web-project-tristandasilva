@@ -2,9 +2,9 @@ import React, { Component, useState, useEffect } from 'react';
 import Nav from '../components/nav/Nav';
 import '../index.css';
 import CategoryList from '../components/category/CategoryList';
-import starIcon from '../../public/star-icon.svg';
-import flamesIcon from '../../public/flames-icon.svg';
-import purpleHeart from '../../public/purpleheart-icon.svg';
+import starIcon from '../assets/star-icon.svg';
+import flamesIcon from '../assets/flames-icon.svg';
+import purpleHeart from '../assets/purpleheart-icon.svg';
 import axios from 'axios';
 
 const urls = [
