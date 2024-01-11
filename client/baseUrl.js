@@ -1,8 +1,11 @@
-const mode = 'production';
-let baseUrl;
+const mode = 'development';
 
-mode == 'production'
-  ? (baseUrl = 'http://99.79.60.159:5050')
-  : (baseUrl = 'http://localhost:5050');
+export const isInProdMode = () => {
+  return mode == 'production';
+};
+
+const baseUrl = isInProdMode()
+  ? 'http://99.79.60.159:5050'
+  : 'http://localhost:5050';
 
 export default baseUrl;
