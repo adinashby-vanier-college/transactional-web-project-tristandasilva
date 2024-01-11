@@ -3,9 +3,7 @@ import useQuery from '../../hooks/useQuery';
 import AlbumItem from './AlbumItem';
 
 const CategoryGrid = ({ title, categoryQuery }) => {
-  const vinyls = useQuery(
-    `http://localhost:5050/products/${categoryQuery}?limit=30`
-  );
+  const vinyls = useQuery(`/products/${categoryQuery}?limit=30`);
   return (
     <div>
       <h1 className='text-white text-xl font-medium text-center mb-7 tracking-[15px]'>

@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
+import useQuery from '../../hooks/useQuery';
 import { useState } from "react";
-import useQuery from "../../hooks/useQuery";
-import CartItemList from "./CartItemList";
+import CartItemList from './CartItemList';
+import minusIcon from '../../assets/minus.svg';
+import tagIcon from '../../assets/tag.svg';
 
 function CartList(props) {
-  const response = useQuery("http://localhost:5050/cart/");
+  const response = useQuery('/cart');
   const [total, setTotal] = useState(0);
   return (
     <div className=" bg-neutral-800 text-white h-screen fixed w-1/4 right-0 z-50 flex flex-col animate-slide-r  lg:w-full">
       <div className="flex justify-between items-center border-b-2 p-5">
         <div className="flex  text-2xl items-center">
-          Cart&nbsp;<img src="/public/tag.svg"></img>
+          Cart&nbsp;<img src={tagIcon}></img>
         </div>
         <button
           className="aspect-square h-10 cursor-pointer"
@@ -18,7 +20,7 @@ function CartList(props) {
             props.onClick(false);
           }}
         >
-          <img src="/public/minus.svg"></img>
+          <img src={minusIcon}></img>
         </button>
       </div>
       {response && response.data.empty ? (

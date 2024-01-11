@@ -1,14 +1,14 @@
 import React, { Component, useState } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { Button } from 'flowbite-react';
-import axios from 'axios';
+import axios from '../../api/axiosConfig';
 
 const AlbumItem = (props) => {
   const [id, setId] = useState(props.id);
   async function addToCart() {
     try {
       await axios.post(
-        'http://localhost:5050/cart/products',
+        '/cart/products',
         {
           products: [{ product: id, qty: 1 }],
         },

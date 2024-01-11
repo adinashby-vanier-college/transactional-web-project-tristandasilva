@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import axios from '../../api/axiosConfig';
 import setCookies from '../../../helpers/setCookies';
 
 const LoginForm = ({ change }) => {
@@ -11,7 +10,7 @@ const LoginForm = ({ change }) => {
   const login = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:5050/users/login', {
+      .post('/users/login', {
         email: email,
         password: password,
       })
@@ -59,7 +58,6 @@ const LoginForm = ({ change }) => {
           onClick={(e) => {
             localStorage.setItem('registerView', true);
             change();
-            // window.dispatchEvent(new Event('storage'));
           }}
         >
           Register Here

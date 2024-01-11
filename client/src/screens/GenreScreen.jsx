@@ -1,17 +1,17 @@
 import React from 'react';
 import Nav from '../components/nav/Nav';
 import CategoryList from '../components/category/CategoryList';
-import guitarIcon from '../../public/electric-guitar.png';
-import popIcon from '../../public/spotlight.png';
-import hipHopIcon from '../../public/hip-hop.png';
-import electronicIcon from '../../public/robot.png';
+import guitarIcon from '../assets/electric-guitar.png';
+import popIcon from '../assets/spotlight.png';
+import hipHopIcon from '../assets/hip-hop.png';
+import electronicIcon from '../assets/robot.png';
 
 const GenreScreen = () => {
   const urls = [
-    'http://localhost:5050/products/genre/Rock?limit=30',
-    'http://localhost:5050/products/genre/Pop?limit=30',
-    'http://localhost:5050/products/genre/Electronic?limit=30',
-    'http://localhost:5050/products/genre/Hip Hop?limit=30',
+    '/products/genre/Rock?limit=30',
+    '/products/genre/Pop?limit=30',
+    '/products/genre/Electronic?limit=30',
+    '/products/genre/Hip Hop?limit=30',
   ];
 
   return (
