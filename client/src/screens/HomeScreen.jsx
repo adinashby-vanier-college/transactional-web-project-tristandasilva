@@ -5,7 +5,6 @@ import CategoryList from '../components/category/CategoryList';
 import starIcon from '../assets/star-icon.svg';
 import flamesIcon from '../assets/flames-icon.svg';
 import purpleHeart from '../assets/purpleheart-icon.svg';
-import axios from 'axios';
 
 const urls = [
   '/products/recent?limit=30',
