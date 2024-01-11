@@ -1,45 +1,47 @@
-import express, { query, response } from 'express';
-import dotenv from 'dotenv';
+import express, { query, response } from "express";
+import dotenv from "dotenv";
 
-import Product from '../models/product.js';
-dotenv.config({ path: './.env' });
+import Product from "../models/product.js";
+dotenv.config({ path: "./.env" });
 
 const router = express.Router();
 
 const staffAlbums = [
-  'The College Dropout',
-  'Rodeo',
-  'Late Registration',
-  'Take Care',
-  'Good Kid, M.A.A.d City',
-  'I Never Liked You',
+  "The College Dropout",
+  "Rodeo",
+  "Late Registration",
+  "Take Care",
+  "Good Kid, M.A.A.d City",
+  "I Never Liked You",
 ];
 
-router.get('/recent', async (req, res) => {
+router.get("/recent", async (req, res) => {
   const response = await Product.find({ year: 2023 })
     .sort({ popularity: -1 })
     .limit(req.query.limit);
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
-router.get('/discount', async (req, res) => {
+router.get("/discount", async (req, res) => {
   const response = await Product.find({ price: { $lt: 10 } })
     .sort({ popularity: -1 })
     .limit(req.query.limit);
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
-router.get('/genre/:id', async (req, res) => {
+router.get("/genre/:id", async (req, res) => {
   const reqGenre = req.params.id;
   const response = await Product.find({
     genre: reqGenre,
-  }).limit(req.query.limit);
+  })
+    .sort({ popularity: -1 })
+    .limit(req.query.limit);
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
-router.get('/search', async (req, res) => {
+router.get("/search", async (req, res) => {
   const searchQuery = req.query.q;
-  const Query = new RegExp(searchQuery, 'i');
+  const Query = new RegExp(searchQuery, "i");
 
   const response = await Product.find({
     $or: [
@@ -54,7 +56,7 @@ router.get('/search', async (req, res) => {
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
-router.get('/trending', async (req, res) => {
+router.get("/trending", async (req, res) => {
   const response = await Product.find({})
     .sort({ popularity: -1 })
     .limit(req.query.limit);
@@ -62,7 +64,7 @@ router.get('/trending', async (req, res) => {
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
-router.get('/discover', async (req, res) => {
+router.get("/discover", async (req, res) => {
   const length = await Product.countDocuments();
 
   const response = await Product.aggregate([
@@ -72,7 +74,7 @@ router.get('/discover', async (req, res) => {
   res.send({ data: response, secret: process.env.SECRET_STRING });
 });
 
-router.get('/staff', async (req, res) => {
+router.get("/staff", async (req, res) => {
   const response = await Product.find({
     title: staffAlbums.map((e) => {
       return e;

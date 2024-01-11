@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
-import CartItem from './CartItem';
+import CartItem from "./CartItem";
+import { useEffect, useState } from "react";
 
-function CartItemList({ data }) {
-  console.log(data);
+function CartItemList({ data, setTotal }) {
   const removeNode = (i) => {
     document.getElementById(i).remove();
   };
-
   return (
-    <div className='overflow-auto'>
+    <div className="overflow-auto h-full no-scrollbar">
       {data &&
         data.data.products.map((e, i) => {
           return (

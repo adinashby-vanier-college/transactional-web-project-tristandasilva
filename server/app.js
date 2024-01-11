@@ -21,10 +21,9 @@ app.use(express.json());
 app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 app.use(cookieParser());
 
-app.use('/users', UserRouter);
-app.use('/products', ProductRouter);
-app.use('/cart', CartRouter);
-//app.use("/wishlist")
+app.use("/users", UserRouter);
+app.use("/products", ProductRouter);
+app.use("/cart", CartRouter);
 
 app.listen(process.env.PORT);
 console.log('Server is listening on port' + process.env.PORT);
