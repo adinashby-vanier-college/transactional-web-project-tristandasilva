@@ -13,19 +13,31 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
       data: { product: id },
     });
   }
+  async function updateItem(_qty) {
+    await axios.put(
+      "http://localhost:5050/cart/products",
+      { product: id, qty: _qty },
+      {
+        withCredentials: true,
+      }
+    );
+  }
   return (
     <div className="flex m-5 text-white" id={_id}>
       <img className="aspect-square h-28 p-1" src={img + secret}></img>
       <div className="flex justify-between w-full py-3 p-1">
         <div className="flex flex-col">
-          <p>{title}</p>
+          <p className="w-8/10">{title}</p>
           <p className="text-neutral-500">{artist}</p>
           <Button.Group>
             <Button
               className="bg-neutral-900 hover:bg-neutral-700 transition-all"
               color="fff"
               onClick={() => {
-                setQty(quantity - 1);
+                if (quantity > 1) {
+                  setQty(quantity - 1);
+                  updateItem(quantity - 1);
+                }
               }}
             >
               -
@@ -38,6 +50,7 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
               className="bg-neutral-900 hover:bg-neutral-700 transition-all"
               onClick={() => {
                 setQty(quantity + 1);
+                updateItem(quantity + 1);
               }}
             >
               +
@@ -45,7 +58,7 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
           </Button.Group>
         </div>
         <div className="flex flex-col items-end">
-          <p>${price}</p>
+          <p>${parseFloat(price * quantity).toFixed(2)}</p>
           <button
             className="my-3 aspect-square h-5"
             onClick={() => {
