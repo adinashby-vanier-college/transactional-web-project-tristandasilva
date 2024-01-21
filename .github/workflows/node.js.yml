@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        #cache: 'npm'
         #cache-dependency-path: client/package-lock.json
     - run: |
         cd client
@@ -27,4 +27,4 @@ jobs:
     - run: |
         cd server
         npm install
-    - run: pm2 restart app.js
+    - run: pm2 restart vinylvault
