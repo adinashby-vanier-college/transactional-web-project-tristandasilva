@@ -27,4 +27,4 @@ jobs:
     - run: |
         cd server
         npm install
-    - run: pm2 restart vinylvault
+    - run: pm2 restart app.js
