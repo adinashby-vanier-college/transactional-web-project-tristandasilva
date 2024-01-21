@@ -25,10 +25,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: |
-        npm ci
-        npm run build
         working-directory: ./client
+        npm install
+        npm run build
     - run: |
-        npm ci
         working-directory: ./server
+        npm install
     - run: pm2 restart vinylvault
