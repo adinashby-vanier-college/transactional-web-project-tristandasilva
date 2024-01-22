@@ -4,7 +4,9 @@
   "description": "This template repository is the starter project for Transactional Web App. project. Written in HTML/CSS/JavaScript/React.js/Node.js/Express.js.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm install && npm run build",
+    "server": "cd server && npm install"
   },
   "author": "",
   "license": "ISC"
