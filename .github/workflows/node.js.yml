@@ -6,7 +6,7 @@ name: Node.js CI
 on:
   push:
     branches: [ "main" ]
-
+    
 jobs:
   build:
 
@@ -18,6 +18,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: 'client/package-lock.json'
     - run: npm run client
     - run: npm run server
     - run: pm2 restart vinylvault
