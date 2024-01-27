@@ -4,10 +4,13 @@ import verifyPassword from "../helpers/verifyPassword.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import createCart from "../helpers/createCart.js";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import firebase from "../config/firebase.js";
 
 dotenv.config({ path: "./.env" });
 
 const router = express.Router();
+const auth = getAuth(firebase);
 
 router.get("/", async (req, res) => {
   const token = jwt.verify(req.headers.authorization, "shhhhh");
@@ -26,18 +29,18 @@ router.get("/logout", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const user = new User({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    password: req.body.password,
-  });
   try {
-    const newUser = await user.save();
-    await createCart(newUser._id);
-    const token = jwt.sign(JSON.stringify(newUser), "shhhhh");
-    res.send({ token: token, user: newUser });
+    createUserWithEmailAndPassword(
+      auth,
+      req.body.email,
+      req.body.password
+    ).then(async (userCred) => {
+      var user = userCred.user;
+      console.log(user);
+    });
   } catch (err) {
+    console.log("failed");
+
     err.code == 11000 // This code is for duplicate email
       ? res
           .status(401)
