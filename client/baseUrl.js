@@ -5,7 +5,7 @@ export const isInProdMode = () => {
 };
 
 const baseUrl = isInProdMode()
-  ? 'http://99.79.77.175'
+  ? 'http://3.96.167.136/'
   : 'http://localhost:5050';
 
 export default baseUrl;
