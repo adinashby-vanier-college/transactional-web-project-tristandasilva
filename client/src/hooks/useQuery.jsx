@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import axios from '../api/axiosConfig';
+import { useEffect, useState } from "react";
+import axios from "../api/axiosConfig";
 
 function useQuery(url) {
   const [data, setData] = useState({});

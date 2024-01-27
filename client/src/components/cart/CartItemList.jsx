@@ -6,6 +6,7 @@ function CartItemList({ data, setTotal }) {
   const removeNode = (i) => {
     document.getElementById(i).remove();
   };
+  console.log(data);
   return (
     <div className="overflow-auto h-full no-scrollbar">
       {data &&
