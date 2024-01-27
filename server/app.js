@@ -16,7 +16,7 @@ const app = express();
 const _dirname = path.dirname('');
 const buildPath = path.join(_dirname, '../client/dist');
 const corsOrigin = isInProdMode()
-  ? 'http://3.96.167.136:5050'
+  ? 'http://35.182.209.67/'
   : 'http://localhost:5173';
 
 process.on('uncaughtException', function (error) {
