@@ -13,10 +13,10 @@ import { router as ProductRouter } from "./api/products.js";
 import { router as CartRouter } from "./api/carts.js";
 
 import Cart from "./models/cart.js";
-import firebase from "./config/firebase.js";
 import db from "./config/db.js";
 
 db();
+var stripe = Stripe(process.env.STRIPE_API);
 
 const app = express();
 const _dirname = path.dirname("");
@@ -41,37 +41,32 @@ app.get("/", (req, res) => {
   });
 });
 
-/*
-app.use("/checkout", async (req, res) => {
-  const token = jwt.verify(req.cookies.token, "shhhhh");
-  const cart = await Cart.find({ user: token._id }).populate(
+app.post("/checkout", async (req, res) => {
+  const user = JSON.parse(req.cookies.user);
+  const cart = await Cart.findOne({ user: user._id }).populate(
     "products.product"
   );
-  const items = [];
-  cart.products.forEach((e) => {
-    items.push({
-      price_data: {
-        currency: "usd",
-        unit_amount: e.product.price,
-        product_data: {
-          name: e.product.title,
-          description: e.product.artist,
-          images: [e.product.cover_image],
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          unit_amount: Math.round(cart.total * 100),
+          product_data: {
+            name: "VinylVault",
+            description: "Purchase Vinyls",
+          },
         },
+        quantity: 1,
       },
-      quantity: e.qty,
-    });
-  });
-  console.log(items);
-  const session = stripe.checkout.sessions.create({
-    line_items: items,
+    ],
     mode: "payment",
     success_url: `${corsOrigin}?success=true`,
     cancel_url: `${corsOrigin}?canceled=true`,
   });
   res.redirect(303, session.url);
 });
-*/
 
 app.use("/users", UserRouter);
 app.use("/products", ProductRouter);

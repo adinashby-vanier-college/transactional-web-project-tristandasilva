@@ -44,20 +44,28 @@ router.post("/products", async (req, res) => {
 // Removes a single items from the cart takes in a product id FORMAT({product})
 router.delete("/products", async (req, res) => {
   const prodId = req.body.product;
-  const product = await Product.findOne({ _id: prodId });
-
   const user = JSON.parse(req.cookies.user);
 
   try {
-    const cart = await Cart.findOneAndUpdate(
-      { user: user._id },
-      {
-        $pull: { products: { product: req.body.product } },
-        $inc: { total: -parseFloat(product.price) },
-      }
+    const cart = await Cart.findOne({ user: user._id }).populate(
+      "products.product"
     );
 
-    res.send(cart);
+    cart.products.forEach(async (element) => {
+      if (element.product._id == prodId) {
+        const deduct = element.product.price * element.qty;
+
+        const newCart = await Cart.findOneAndUpdate(
+          { user: user._id },
+          {
+            $pull: { products: { product: req.body.product } },
+            $inc: { total: -deduct },
+          }
+        );
+
+        res.send(newCart);
+      }
+    });
   } catch (err) {
     console.log(err);
   }
@@ -75,7 +83,7 @@ router.put("/products", async (req, res) => {
   const user = JSON.parse(req.cookies.user);
 
   const cart = await Cart.findOneAndUpdate(
-    { user: user._id, "products.product": req.body.product },
+    { user: user._id, "products.product": prodId },
     { $set: { "products.$.qty": req.body.qty }, $inc: { total: increment } }
   );
   res.send(cart);

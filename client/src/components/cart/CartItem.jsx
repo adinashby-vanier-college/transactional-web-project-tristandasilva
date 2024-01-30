@@ -6,7 +6,6 @@ import exitIcon from "../../assets/exit.svg";
 /* eslint-disable react/prop-types */
 function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
   const [quantity, setQty] = useState(qty);
-  const [prevQuantity, setPrevQty] = useState(0);
   const [id, setId] = useState(_id);
 
   async function deleteItem() {
@@ -15,11 +14,9 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
       data: { product: id },
     });
   }
-  async function updateItem(_qty) {
+  async function updateItem(_qty, filter) {
     await axios.put(
-      `http://localhost:5050/cart/products?filter=${
-        quantity < prevQuantity ? "dec " : "inc"
-      }`,
+      `http://localhost:5050/cart/products?filter=${filter}`,
       { product: id, qty: _qty },
       {
         withCredentials: true,
@@ -39,9 +36,8 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
               color="fff"
               onClick={() => {
                 if (quantity > 1) {
-                  setPrevQty(quantity);
                   setQty(quantity - 1);
-                  updateItem(quantity - 1);
+                  updateItem(quantity - 1, "dec");
                 }
               }}
             >
@@ -54,8 +50,7 @@ function CartItem({ title, img, artist, price, qty, _id, deleteNode, secret }) {
               color="fff"
               className="bg-neutral-900 hover:bg-neutral-700 transition-all"
               onClick={() => {
-                setPrevQty(quantity);
-                setQty(quantity + 1);
+                setQty(quantity + 1, "inc");
                 updateItem(quantity + 1);
               }}
             >

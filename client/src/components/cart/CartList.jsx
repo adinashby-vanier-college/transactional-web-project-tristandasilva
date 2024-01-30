@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import useQuery from "../../hooks/useQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartItemList from "./CartItemList";
 import minusIcon from "../../assets/minus.svg";
 import tagIcon from "../../assets/tag.svg";
@@ -9,6 +9,11 @@ import baseUrl from "../../../baseUrl";
 function CartList(props) {
   const response = useQuery("/cart");
   const [total, setTotal] = useState(0);
+  useEffect(() => {
+    if (response && response.data.total > 0) {
+      setTotal(response.data.total);
+    }
+  }, [total, response, setTotal]);
   return (
     <div className=" bg-neutral-800 text-white h-screen fixed w-1/4 right-0 z-50 flex flex-col animate-slide-r  lg:w-full">
       <div className="flex justify-between items-center border-b-2 p-5">
