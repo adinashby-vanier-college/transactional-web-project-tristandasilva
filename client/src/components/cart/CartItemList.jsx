@@ -19,7 +19,7 @@ function CartItemList({ data, setTotal }) {
               artist={e.product.artist}
               img={e.product.cover_image}
               price={e.product.price}
-              _id={e.product._id}
+              _id={e.product.master_id}
               qty={e.qty}
               secret={data.secret}
             />

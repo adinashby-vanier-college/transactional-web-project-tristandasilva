@@ -2,11 +2,9 @@ import express, { response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
-<<<<<<< HEAD
 import Stripe from "stripe";
 import { isInProdMode } from "../client/baseUrl.js";
 import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
 
 dotenv.config({ path: "./.env" });
 
@@ -15,23 +13,12 @@ import { router as ProductRouter } from "./api/products.js";
 import { router as CartRouter } from "./api/carts.js";
 
 import Cart from "./models/cart.js";
+import firebase from "./config/firebase.js";
 import db from "./config/db.js";
 
 db();
 
 const app = express();
-const stripe = new Stripe(process.env.STRIPE_API);
-=======
-import { isInProdMode } from "../client/baseUrl.js";
-
-import { router as UserRouter } from "./api/users.js";
-import { router as ProductRouter } from "./api/products.js";
-import { router as CartRouter } from "./api/carts.js";
-
-import firebase from "./config/firebase.js";
-
-const app = express();
->>>>>>> 0eb31d68525138b25f21c4b6e114679f17a5fe89
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../client/dist");
 const corsOrigin = isInProdMode()
@@ -54,7 +41,7 @@ app.get("/", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
+/*
 app.use("/checkout", async (req, res) => {
   const token = jwt.verify(req.cookies.token, "shhhhh");
   const cart = await Cart.find({ user: token._id }).populate(
@@ -84,9 +71,8 @@ app.use("/checkout", async (req, res) => {
   });
   res.redirect(303, session.url);
 });
+*/
 
-=======
->>>>>>> 0eb31d68525138b25f21c4b6e114679f17a5fe89
 app.use("/users", UserRouter);
 app.use("/products", ProductRouter);
 app.use("/cart", CartRouter);

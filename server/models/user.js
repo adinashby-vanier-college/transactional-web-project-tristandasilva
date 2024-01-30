@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import crypto from "crypto";
+import Cart from "./cart.js";
 
 const UserSchema = new mongoose.Schema({
   first_name: {
@@ -15,23 +15,6 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  salt: {
-    type: String,
-  },
-  password: {
-    type: String,
-  },
-});
-
-UserSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
-  this.salt = crypto.randomBytes(128).toString("base64");
-  this.password = crypto
-    .pbkdf2Sync(this.password, this.salt, 10000, 512, "sha512")
-    .toString("hex");
-  return next();
 });
 
 export default mongoose.model("User", UserSchema);

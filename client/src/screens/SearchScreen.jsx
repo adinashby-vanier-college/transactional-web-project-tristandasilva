@@ -5,9 +5,7 @@ import useQuery from "../hooks/useQuery";
 
 const SearchScreen = () => {
   const [params, setParams] = useSearchParams();
-  const vinyls = useQuery(
-    `/products/search?q=${params.get("q")}&limit=30`
-  );
+  const vinyls = useQuery(`/products/search?q=${params.get("q")}&limit=30`);
   return (
     <div className="h-full">
       <Nav />
