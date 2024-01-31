@@ -3,6 +3,7 @@ import { Button } from 'flowbite-react';
 import axios from '../../api/axiosConfig';
 import setCookies from '../../../helpers/setCookies';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = ({ change }) => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const RegisterForm = ({ change }) => {
   const [lastName, setLastName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [t, i18n] = useTranslation();
 
   const register = (e) => {
     e.preventDefault();
@@ -44,7 +46,7 @@ const RegisterForm = ({ change }) => {
   return (
     <form className='text-white' onSubmit={register}>
       <div className='mb-3'>
-        <label className='font-thin'>First name</label>
+        <label className='font-thin'>{t('navigation.auth.firstName')}</label>
         <input
           type='text'
           className=' bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm w-full'
@@ -53,7 +55,7 @@ const RegisterForm = ({ change }) => {
         />
       </div>
       <div className='mb-3'>
-        <label className='font-thin'>Last name</label>
+        <label className='font-thin'>{t('navigation.auth.lastName')}</label>
         <input
           type='text'
           className=' bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm w-full'
@@ -62,7 +64,7 @@ const RegisterForm = ({ change }) => {
         />
       </div>
       <div className='mb-3'>
-        <label className='font-thin'>Email</label>
+        <label className='font-thin'>{t('navigation.auth.email')}</label>
         <input
           type='email'
           className=' bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm w-full'
@@ -71,7 +73,7 @@ const RegisterForm = ({ change }) => {
         />
       </div>
       <div className='mb-3'>
-        <label className='font-thin'>Password</label>
+        <label className='font-thin'>{t('navigation.auth.password')}</label>
         <input
           type='password'
           className=' bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm w-full'
@@ -80,7 +82,7 @@ const RegisterForm = ({ change }) => {
         />
       </div>
       <div className='mb-3'>
-        <label className='font-thin'>Confirm password</label>
+        <label className='font-thin'>{t('navigation.auth.confirmPass')}</label>
         <input
           type='password'
           className=' bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm w-full'
@@ -99,12 +101,12 @@ const RegisterForm = ({ change }) => {
             // window.dispatchEvent(new Event('storage'));
           }}
         >
-          I have an account.
+          {t('navigation.auth.iHaveAccount')}
         </p>
         <input
           className='bg-yellow-500 px-3 p-2 rounded-lg w-full cursor-pointer'
           type='submit'
-          value={'Register'}
+          value={t('navigation.auth.register')}
         />
       </div>
     </form>

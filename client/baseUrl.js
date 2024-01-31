@@ -1,4 +1,4 @@
-const mode = 'production';
+const mode = 'development';
 
 export const isInProdMode = () => {
   return mode == 'production';
