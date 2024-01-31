@@ -17,4 +17,13 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+UserSchema.pre("save", async function (next) {
+  const user = this;
+  const cart = await Cart.create({
+    user: user,
+  });
+  cart.products = [];
+  cart.save();
+});
+
 export default mongoose.model("User", UserSchema);

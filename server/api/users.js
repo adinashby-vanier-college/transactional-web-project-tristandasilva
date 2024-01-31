@@ -2,28 +2,16 @@ import express from "express";
 import User from "../models/user.js";
 import dotenv from "dotenv";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
   signOut,
 } from "firebase/auth";
-import firebase from "../config/firebase.js";
+import admin from "firebase-admin";
+import firebaseConfig from "../config/firebase.js";
 
 dotenv.config({ path: "./.env" });
 
 const router = express.Router();
-const auth = getAuth(firebase);
-
-var user;
-
-app.use((req, res, next) => {
-  user = firebase.auth().currentUser;
-  res.locals.currentUser = user;
-  next();
-});
 
 router.get("/", async (req, res) => {
   const userEmail = auth.currentUser.email;
@@ -66,10 +54,10 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
+
   try {
     signInWithEmailAndPassword(auth, email, password).then(async (userCred) => {
-      user = userCred.user;
-      const newUser = await User.findOne({ email: userCred.user.email });
+      const user = await User.findOne({ email: userCred.user.email });
       const accessToken = userCred.user.stsTokenManager.accessToken;
       res.send({ token: accessToken, user: user });
     });
@@ -80,7 +68,25 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/login/google", async (req, res) => {});
+router.post("/login/oauth", async (req, res) => {
+  const { token, username, email } = req.body;
+
+  try {
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      const newUser = await User.create({
+        first_name: username.split(" ")[0],
+        last_name: username.split(" ")[1],
+        email: email,
+      });
+      newUser.save();
+      return res.send({ token: token, user: user });
+    }
+    res.send({ token: token, user: user });
+  } catch (err) {
+    console.log(err);
+  }
+});
 router.post("/login/facebook", async (req, res) => {});
 
 export { router };

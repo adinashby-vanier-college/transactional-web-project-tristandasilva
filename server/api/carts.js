@@ -9,7 +9,6 @@ import Product from "../models/product.js";
 dotenv.config({ path: "./.env" });
 
 const router = express.Router();
-const auth = getAuth(firebase);
 
 // Gets the users cart information
 router.get("/", async (req, res) => {
