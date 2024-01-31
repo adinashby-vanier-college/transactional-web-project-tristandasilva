@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "../../api/axiosConfig";
 import setCookies from "../../../helpers/setCookies";
 import { googleLogin, facebookLogin } from "../../../helpers/oauth.js";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = ({ change }) => {
+  const [t, i18n] = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,7 +36,7 @@ const LoginForm = ({ change }) => {
   return (
     <form className="text-white" onSubmit={login}>
       <div className="mb-3">
-        <label className="font-thin">Email</label>
+        <label className="font-thin">{t("navigation.auth.email")}</label>
         <input
           type="email"
           className=" bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm"
@@ -43,7 +45,7 @@ const LoginForm = ({ change }) => {
         />
       </div>
       <div className="mb-3">
-        <label className="font-thin">Password</label>
+        <label className="font-thin">{t("navigation.auth.password")}</label>
         <input
           type="password"
           className=" bg-neutral-700 border-none focus:ring-4 focus:ring-yellow-500/90 rounded-sm"
@@ -61,12 +63,12 @@ const LoginForm = ({ change }) => {
             change();
           }}
         >
-          Register Here
+          {t("navigation.auth.registerHere")}
         </p>
         <input
           className="bg-yellow-500 px-3 p-2 rounded-lg w-full cursor-pointer"
           type="submit"
-          value={"Login"}
+          value={t("navigation.auth.login")}
         />
       </div>
 
