@@ -1,15 +1,24 @@
 /* eslint-disable react/prop-types */
 import useQuery from "../../hooks/useQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartItemList from "./CartItemList";
 import minusIcon from "../../assets/minus.svg";
 import tagIcon from "../../assets/tag.svg";
 import { useTranslation } from "react-i18next";
+import baseUrl from "../../../baseUrl";
 
 function CartList(props) {
   const response = useQuery("/cart");
   const [total, setTotal] = useState(0);
   const [t, i18n] = useTranslation();
+
+  useEffect(() => {
+    {
+      if (response && response.data.total) {
+        setTotal(response.data.total);
+      }
+    }
+  }, [total, setTotal, response]);
 
   return (
     <div className=" bg-neutral-800 text-white h-screen fixed w-1/4 right-0 z-50 flex flex-col animate-slide-r  lg:w-full">
