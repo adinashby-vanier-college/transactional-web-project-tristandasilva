@@ -34,8 +34,7 @@ router.post('/register', async (req, res) => {
   try {
     createUserWithEmailAndPassword(auth, email, password).then(
       async (userCred) => {
-        let user = userCred.user;
-        const newUser = await User.create({
+        const user = await User.create({
           first_name: first_name,
           last_name: last_name,
           email: email,
