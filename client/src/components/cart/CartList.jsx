@@ -6,6 +6,7 @@ import minusIcon from "../../assets/minus.svg";
 import tagIcon from "../../assets/tag.svg";
 import { useTranslation } from "react-i18next";
 import baseUrl from "../../../baseUrl";
+import Cookies from "js-cookie";
 
 function CartList(props) {
   const response = useQuery("/cart");
@@ -35,7 +36,7 @@ function CartList(props) {
           <img src={minusIcon}></img>
         </button>
       </div>
-      {response && response.data.empty ? (
+      {(response && response.data.empty) || !Cookies.get("user") ? (
         <div className="flex items-center justify-center h-full ">
           {t("cart.cartEmpty")}
         </div>
