@@ -50,7 +50,7 @@ function CartList(props) {
             className='bg-yellow-500 rounded-lg p-2 px-10 text-xl'
             type='submit'
           >
-            Checkout
+            {t('cart.checkout')}
           </button>
         </form>
       </div>
