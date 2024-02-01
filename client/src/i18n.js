@@ -32,6 +32,7 @@ i18n
               lastName: 'Last name',
               confirmPass: 'Confirm password',
               register: 'Register',
+              iHaveAccount: 'I have an account.',
             },
           },
           cart: {
