@@ -19,7 +19,9 @@ For this deliverable, you have the following tasks **(5%)**:
 • Project Description – 2%  
 • Mock-up design – 3%
 
-You could use tools like [Moqups](https://moqups.com/) or [Figma](https://www.figma.com/) for making the mock-up design and wiring.
+[CLICK HERE FOR PROPOSAL PRESENTATION](https://docs.google.com/presentation/d/1nN0v9G9lu-Clkdkze4vJW2c4_kgkcyXB1KtQIwj1ZM4/edit?usp=sharing)
+
+[CLICK HERE FOR FIGMA FILE](https://www.figma.com/file/vOZ9B8ZOnvwUzrw29NH2oj/Vinyl-Vault?type=design&node-id=670%3A3468&mode=design&t=QM3nb4loYxzmAiZf-1)
 
 ### Deliverable 1
 
@@ -32,6 +34,8 @@ For this deliverable, you have the following tasks based on your course outline 
 • Using an issue-tracking software - 3%
 
 Also, include a document explaining task distribution between team members.
+
+[CLICK HERE FOR TASK DISTRIBUTION](https://docs.google.com/document/d/1Bdjg17cUZ95XgB8Szx_gweqvgxdW-34gUmYqpNHtIfc/edit?usp=sharing)
 
 ### Deliverable 2
 
